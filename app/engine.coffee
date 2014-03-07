@@ -7,8 +7,7 @@ class App.Engine
     @context = @canvas.getContext '2d'
     $(document).keydown @keyDown
 
-    @player = new App.Character @context, 'img/knight.png'
-    @loop()
+    @player = new App.Sprite @context, 'img/knight.png', @loop
 
   move: (offsetX, offsetY) ->
     @position.x += offsetX

@@ -1,16 +1,14 @@
 class App.Sprite extends App.Entity
 
-  loaded:       false
   frame:        0
   msPerFrame:   180
   lastDrawTime: 0
   delta:        0
 
-  constructor: (@context, @path) ->
+  constructor: (@context, @path, @loaded) ->
     @image = new Image
 
-    @image.onload = =>
-      @loaded = true
+    @image.onload = @loaded
 
     @image.src = @path
 
@@ -23,4 +21,4 @@ class App.Sprite extends App.Entity
       @delta += Date.now() - @lastDrawTime
 
     @lastDrawTime = Date.now()
-    @context.drawImage @image, @frame*16, 0, 16, 25, 8, 8, 16, 25  if @loaded
+    @context.drawImage @image, @frame*16, 0, 16, 25, 8, 8, 16, 25
