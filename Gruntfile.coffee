@@ -6,11 +6,10 @@ module.exports = (grunt) ->
 
     coffee:
       compile:
-        expand: true
-        cwd:   'app'
-        src:   ['*.coffee']
-        dest:  'public/js'
-        ext:   '.js'
+        options:
+          joined: true
+        files:
+          'public/js/main.js': ['app/*.coffee']
 
     sass:
       dist:
