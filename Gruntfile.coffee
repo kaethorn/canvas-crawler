@@ -9,7 +9,7 @@ module.exports = (grunt) ->
         options:
           joined: true
         files:
-          'public/js/main.js': ['app/*.coffee']
+          'public/js/main.js': ['app/main.coffee', 'app/*.coffee']
 
     sass:
       dist:
