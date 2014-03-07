@@ -12,7 +12,7 @@ class App.Sprite extends App.Entity
 
     @image.src = @path
 
-  draw: ->
+  draw: (direction) ->
     if @delta > @msPerFrame
       @delta = 0
       @frame++
@@ -21,4 +21,4 @@ class App.Sprite extends App.Entity
       @delta += Date.now() - @lastDrawTime
 
     @lastDrawTime = Date.now()
-    @context.drawImage @image, @frame*16, 0, 16, 25, 8, 8, 16, 25
+    @context.drawImage @image, @frame*16, direction*24, 16, 24, 8, 8, 16, 24
