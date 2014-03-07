@@ -16,7 +16,7 @@ class App.Sprite extends App.Entity
     if @delta > @msPerFrame
       @delta = 0
       @frame++
-      @frame = 0 if @frame > 2
+      @frame %= 3
     else
       @delta += Date.now() - @lastDrawTime
 
