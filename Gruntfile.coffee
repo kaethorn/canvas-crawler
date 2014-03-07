@@ -9,7 +9,12 @@ module.exports = (grunt) ->
         options:
           joined: true
         files:
-          'public/js/main.js': ['app/main.coffee', 'app/*.coffee']
+          'public/js/main.js': [
+            'app/main.coffee',
+            'app/entity.coffee',
+            'app/sprite.coffee',
+            'app/*.coffee'
+          ]
 
     sass:
       dist:
@@ -35,9 +40,9 @@ module.exports = (grunt) ->
 
     concurrent:
       assets:
-        tasks: ['coffee', 'sass', 'haml', 'copy:js', 'copy:css']
+        tasks: ['coffee', 'sass', 'haml', 'copy:js', 'copy:css', 'copy:img']
         options:
-          limit: 5
+          limit: 6
       development:
         tasks: ['watch:sass', 'watch:coffee', 'watch:haml', 'watch:livereload', 'connect']
         options:
@@ -70,6 +75,10 @@ module.exports = (grunt) ->
         flatten: true
         src:     'lib/**.css'
         dest:    'public/css'
+      img:
+        expand:  true
+        src:     'img/**.png'
+        dest:    'public'
 
     connect:
       server:
