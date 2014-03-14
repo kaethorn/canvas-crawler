@@ -34,7 +34,6 @@ class App.Engine
 
     @context.save()
     @context.clearRect 0, 0, @canvas.width, @canvas.height
-    #@context.translate @canvas.width/2 + @position.x, @canvas.height/2 + @position.y
-    @background.draw()
-    @player.draw @position.direction, @position.x, @position.y
+    @background.draw @position.x, @position.y
+    @player.draw @position.direction
     @context.restore()

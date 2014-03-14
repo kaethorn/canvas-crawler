@@ -1,6 +1,6 @@
 class App.Tile extends App.Resource
 
-  draw: ->
+  draw: (x, y) ->
     pattern = @context.createPattern @resource, 'repeat'
     @context.fillStyle = pattern
-    @context.fillRect 0, 0, 800, 600
+    @context.fillRect -x, -y, 800, 600

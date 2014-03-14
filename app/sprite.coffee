@@ -5,7 +5,7 @@ class App.Sprite extends App.Resource
   lastDrawTime: 0
   delta:        0
 
-  draw: (direction, x, y) ->
+  draw: (direction) ->
     if @delta > @msPerFrame
       @delta = 0
       @frame++
@@ -14,4 +14,4 @@ class App.Sprite extends App.Resource
       @delta += Date.now() - @lastDrawTime
 
     @lastDrawTime = Date.now()
-    @context.drawImage @resource, @frame*16, direction*24, 16, 24, x, y, 16, 24
+    @context.drawImage @resource, @frame*16, direction*24, 16, 24, 400, 300, 16, 24
