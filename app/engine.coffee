@@ -8,7 +8,10 @@ class App.Engine
     @context = @canvas.getContext '2d'
     $(document).keydown @keyDown
 
-    @player = new App.Sprite @context, 'img/knight.png', @loop
+    loader = new App.ResourceLoader @loop, @context
+    @player = loader.queue App.Sprite, 'img/knight.png'
+    @background = loader.queue App.Tile, 'img/floor-tile.png'
+    loader.load()
 
   move: (offsetX, offsetY, direction) ->
     @position.x += offsetX
@@ -31,6 +34,7 @@ class App.Engine
 
     @context.save()
     @context.clearRect 0, 0, @canvas.width, @canvas.height
-    @context.translate @canvas.width/2 + @position.x, @canvas.height/2 + @position.y
-    @player.draw @position.direction
+    #@context.translate @canvas.width/2 + @position.x, @canvas.height/2 + @position.y
+    @background.draw()
+    @player.draw @position.direction, @position.x, @position.y
     @context.restore()

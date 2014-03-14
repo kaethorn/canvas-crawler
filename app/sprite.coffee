@@ -1,18 +1,11 @@
-class App.Sprite extends App.Entity
+class App.Sprite extends App.Resource
 
   frame:        0
   msPerFrame:   180
   lastDrawTime: 0
   delta:        0
 
-  constructor: (@context, @path, @loaded) ->
-    @image = new Image
-
-    @image.onload = @loaded
-
-    @image.src = @path
-
-  draw: (direction) ->
+  draw: (direction, x, y) ->
     if @delta > @msPerFrame
       @delta = 0
       @frame++
@@ -21,4 +14,4 @@ class App.Sprite extends App.Entity
       @delta += Date.now() - @lastDrawTime
 
     @lastDrawTime = Date.now()
-    @context.drawImage @image, @frame*16, direction*24, 16, 24, 8, 8, 16, 24
+    @context.drawImage @resource, @frame*16, direction*24, 16, 24, x, y, 16, 24

@@ -11,7 +11,7 @@ module.exports = (grunt) ->
         files:
           'public/js/main.js': [
             'app/main.coffee',
-            'app/entity.coffee',
+            'app/resource.coffee',
             'app/sprite.coffee',
             'app/*.coffee'
           ]
